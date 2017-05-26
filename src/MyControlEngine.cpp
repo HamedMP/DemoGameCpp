@@ -25,8 +25,7 @@
 using namespace std;
 
 /*return if it is possible put a ship into a cell*/
-bool
-check_cell(point *p,std::vector<BLine*> *Blines ) {
+bool check_cell(point *p,std::vector<BLine*> *Blines ) {
 	bool *check = (*Blines)[p->nLine]->ships_in_cells;
 	if(check[p->ncell])
 		return false;
@@ -38,8 +37,7 @@ check_cell(point *p,std::vector<BLine*> *Blines ) {
 
 /*check if it's possible drawing where there was the click.
   All calculations are made by using the relative measures*/
-void
-check_point(point *p, float width, float heigth) {
+void check_point(point *p, float width, float heigth) {
 	float epsilon = 0.01;	//small value to divide ships from lines
 	float v_line;
 	float o_line;
@@ -90,7 +88,7 @@ check_point(point *p, float width, float heigth) {
 }
 
 void MyControlEngine::MouseCallback(int button, int state, int x, int y){
-
+if(!game->pause & !game->game_over & !game->main_menu){
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
 		point *p = new point;
 		//turn absolute coordinates into board coordinates
@@ -116,13 +114,34 @@ void MyControlEngine::MouseCallback(int button, int state, int x, int y){
 			game->update_n_ships(ships->size());
 			delete p;
 		}
-
+        }
 	}
 }
 
 
 void MyControlEngine::KeyboardCallback(unsigned char key, int x, int y){
-	if(key == 'a'  && game->wave == NULL) {
+    if(game->main_menu){
+        if(key== ' ')
+          game->main_menu = false;
+        else if('1'<= key && key <='5')
+            game->set_num_lines(((int)key)-48);
+        else if(key=='q')
+            game->change_difficulty(HARDER);
+        else if(key=='e')
+            game->change_difficulty(EASIER);
+        else
+            std::cout << "nada" << " " << key << " "<<std::endl;
+    }
+    else if(game->pause){
+        if(key == 'p')
+                game->pause = ! game->pause;
+    }
+    else if(game->game_over){
+        if(key == 'r' && game->game_over)
+                game->reset();
+    }
+    else {
+    if(key == 'a'  && game->wave == NULL) {
 		point *p = new point;
 		//turn absolute coordinates into board coordinates
 		p->x = (float)(x-(game->window_width/2)) / (game->window_width/2);
@@ -130,23 +149,21 @@ void MyControlEngine::KeyboardCallback(unsigned char key, int x, int y){
 		game->wave = new Wave(game->level);
 		game->n_asteroids = game->wave->number_asteroids;
 		printf("Level: %d\n", game->level);
-
-	} else if(key == 'p') {
+    }
+    else if(key == 'p')
 		game->pause = ! game->pause;
-
-	} else if(key == 'h') {
+    else if(key == 'h')
 		game->pause = true;
-
-	} else if(key == 'q') {
+    else if(key == 'q')
 		game->ship_type = SNOW_SHIP;
-	} else if(key == 'w') {
+    else if(key == 'w')
 		game->ship_type = GRASS_SHIP;
-	} else if(key == 'e') {
+    else if(key == 'e')
 		game->ship_type = BLOOD_SHIP;
-	} else if(key == 'r' && game->game_over) {
-		game->reset();	
+
 	}
 
 }
 
+MyControlEngine::~MyControlEngine(){}
 

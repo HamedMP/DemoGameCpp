@@ -58,7 +58,7 @@ class Asteroid{
 		bool win;
 
 
-		void draw();
+        void draw();
 		void tick();
 		void update_pos();
 

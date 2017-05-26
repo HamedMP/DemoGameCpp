@@ -24,11 +24,20 @@
 #include "Config.h"
 #include "GraphicPrimitives.h"
 #include "Wave.h"
-
+#define TOO_EASY_DIF 1
+#define EASY_DIF 2
+#define MEDIUM_DIF 3
+#define HARD_DIF 4
+#define VERY_HARD_DIF 5
+#define EASIER 0
+#define HARDER 1
 
 using namespace std;
 
 class Game {
+
+    private:
+        void getDificultyChar(char* label);
 
 	public:
 		Game():
@@ -41,8 +50,13 @@ class Game {
 			n_ships(0),
 			n_asteroids(0),
 			n_shots(0),
+            difficulty(1),
+            number_of_lines(3),
+            main_menu(true),
 			pause(false),
             game_over(false),
+            difficulty_label(new char[64]),
+            number_of_lines_label(new char[32]),
             str_score(new char[20]),
             str_n_ships(new char[20]),
             str_n_asteroids(new char[20]),
@@ -57,22 +71,31 @@ class Game {
 		int n_ships;	//counter for the number of ships
 		int n_asteroids;  //counter for the number of asteroids
 		int n_shots;	//counter for the number of shots
-		bool pause;		//flag for pause
+        int difficulty; //Level of difficulty 1 easy - 5 very hard
+        int number_of_lines; //Number of lines to defend
+        bool main_menu; //flag for the main menu
+        bool pause;		//flag for pause
 		bool game_over;	//flag for game_over
 		
+        char *difficulty_label;
+        char *number_of_lines_label;
+
 		char *str_score;
 		char *str_n_ships;
 		char *str_n_asteroids;
 		char *str_help;
 
-		void draw();
-		void pause_draw();
+        void main_menu_draw();
+        void set_num_lines(int lines);
+        void change_difficulty(int change);
+        void draw();
+        void pause_draw();
 		void update_score(int s);
 		void update_n_ships(int s);
 		void update_n_asteroids(int a);
 		void update_n_shots(int s);
 		bool check_enough_score(int type);
 		void level_completed();
-		void game_over_draw();
+        void game_over_draw();
 		void reset();
 };

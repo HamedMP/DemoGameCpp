@@ -42,5 +42,6 @@ class MyGameEngine:public GameEngine {
         Asteroids() {}
 
 	virtual void idle();
+    virtual ~MyGameEngine();
 
 };

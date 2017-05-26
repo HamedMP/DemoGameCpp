@@ -18,7 +18,7 @@
 #pragma once
 #define WINDOW_WIDTH 1200
 #define WINDOW_HEIGHT 800
-#define N_LINES 4
+#define N_LINES 3
 #define N_CELLS 10
 #define RW_CELL (float) 2.0/N_CELLS
 #define RH_CELL (float) 2.0/N_LINES

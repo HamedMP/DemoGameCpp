@@ -54,5 +54,5 @@ class BLine {
 		int n_olines;	//number of orizontal lines
 		bool *ships_in_cells;	//true if the nth cell contains already a ship
 
-		void draw();
+        void draw();
 };

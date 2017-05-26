@@ -53,7 +53,7 @@ class Shot {
         float speed;
         //float power;
 
-		void draw();
+        void draw();
 		void tick();
 		void update_pos();
 

@@ -41,7 +41,8 @@ class MyGraphicEngine:public GraphicEngine {
 		{}
 
 
-	virtual void Draw();
+    virtual void Draw();
 	virtual void reshape(int width, int height);
+    virtual ~MyGraphicEngine();
 
 };

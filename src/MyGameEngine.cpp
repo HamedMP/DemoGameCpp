@@ -39,3 +39,5 @@ void MyGameEngine::idle(){
 		}
 	}
 }
+
+MyGameEngine::~MyGameEngine(){}

@@ -51,6 +51,6 @@ int main(int argc, char * argv[]) {
 	e.setGameEngine(gme);
 	e.setControlEngine(ce);
 
-	e.start();
+    e.start();
 	return 0;
 }

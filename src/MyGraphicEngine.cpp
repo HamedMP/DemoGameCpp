@@ -22,16 +22,16 @@
 using namespace std;
 
 void MyGraphicEngine::Draw(){
-	if(!game->pause && ! game->game_over) {
+    if(!game->pause && !game->game_over && !game->main_menu) {
 		int shot_counter = 0;
 		for (int i = 0; i < (int)Blines->size(); i++) {
-			(*Blines)[i]->draw();
+            (*Blines)[i]->draw();
 		}
 		for (int i = 0; i < (int)ships->size(); i++) {
-			(*ships)[i]->draw();
+            (*ships)[i]->draw();
 
 			for(int y = 0; y < (int)((*ships)[i])->shots.size(); y++) {
-				((*ships)[i])->shots[y]->draw();
+                ((*ships)[i])->shots[y]->draw();
 				shot_counter += ((*ships)[i])->shots.size();
 			}
 
@@ -40,27 +40,34 @@ void MyGraphicEngine::Draw(){
 
 		if(game->wave!=NULL)
 			for (int i = 0; i < (int)game->wave->Asteroids.size(); i++) {
-				game->wave->Asteroids[i]->draw();
+                game->wave->Asteroids[i]->draw();
 			}
 
-		game->draw();
+        game->draw();
 		//since the ship can create a shot only in its draw, we need to update n_shot from here
 		game->update_n_ships(ships->size());
 		game->update_n_shots(shot_counter);
 		if(game->wave != NULL)
-			game->update_n_asteroids(game->wave->number_asteroids);
+            game->update_n_asteroids(game->wave->number_asteroids);
+    }
+      else if(game->pause)
+        game->pause_draw();
+      else if(game->game_over)
+        game->game_over_draw();
+      else if(game->main_menu)
+        game->main_menu_draw();
 
-	} else if(game->pause) {
-		game->pause_draw();
-	} else if(game->game_over) {
-		game->game_over_draw();
-	}
 }
 
 
-void
-MyGraphicEngine::reshape(int width, int height) {
+void MyGraphicEngine::reshape(int width, int height) {
 	game->window_width = width;
 	game->window_height = height;
+}
+
+MyGraphicEngine::~MyGraphicEngine(){
+    delete game;
+    delete ships;
+    delete Blines;
 }
 

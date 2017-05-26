@@ -65,7 +65,7 @@ class Spaceship{
 
 		std::vector<Shot*> shots;
 
-		void draw();
+        void draw();
 		void properties_assign();
 		void tick();
 		void change_shot_direction(int counter);

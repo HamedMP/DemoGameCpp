@@ -25,9 +25,41 @@
 
 using namespace std;
 
+void Game::getDificultyChar(char* label){
+    switch(this->difficulty){
+    case(TOO_EASY_DIF):  sprintf(label, "%s", "Very EASY"); break;
+    case(EASY_DIF):      sprintf(label, "%s", "EASY"); break;
+    case(MEDIUM_DIF):    sprintf(label, "%s", "Medium"); break;
+    case(HARD_DIF):      sprintf(label, "%s", "Hard"); break;
+    case(VERY_HARD_DIF): sprintf(label, "%s", "Very Hard ?"); break;
+    }
+}
 
-void
-Game::draw(){
+void Game::main_menu_draw() {
+    char * tmp_str = new char[16];
+    char str[] = "Spaceships EIT Edition";
+    char str1[] = "Press 'space bar' to start...";
+    getDificultyChar(tmp_str);
+    sprintf(difficulty_label, "%s%s%s", "Difficulty: ", tmp_str, " use 'q' for increase and 'e' for decrease... ");
+    sprintf(number_of_lines_label, "%s%d%s", "Lines to defend: '", number_of_lines, "' change them with num keys");
+    GraphicPrimitives::drawText2D(str, -0.13, 0.8, 1, 0, 0);
+    GraphicPrimitives::drawText2D(str1, -0.16, 0.6, 1, 1, 0);
+    GraphicPrimitives::drawText2D(difficulty_label, -0.16, 0.4, 1, 1, 0);
+    GraphicPrimitives::drawText2D(number_of_lines_label, -0.16, 0.2, 1, 1, 0);
+}
+
+void Game::set_num_lines(int lines){
+    this->number_of_lines = lines;
+}
+
+void Game::change_difficulty(int change){
+    if(change == EASIER)
+        this->difficulty = this->difficulty == TOO_EASY_DIF ? TOO_EASY_DIF : this->difficulty-1;
+    else
+        this->difficulty = this->difficulty == VERY_HARD_DIF ? VERY_HARD_DIF : this->difficulty+1;
+}
+
+void Game::draw(){
 
 	sprintf(str_score, "%s%d", "Score: ", score);
 	sprintf(str_n_ships, "%s%d", "Ships: ", n_ships);
@@ -40,8 +72,7 @@ Game::draw(){
 	GraphicPrimitives::drawText2D(str_help, -0.1, -1, 1, 1, 0);
 }
 
-void
-Game::pause_draw() {
+void Game::pause_draw() {
 	char str[] = "PAUSE";
 	char str1[] = "Press 'p' to continue ...";
 	char str2[] = "h: Show this page";
@@ -61,28 +92,23 @@ Game::pause_draw() {
 }
 
 
-void
-Game::update_score(int s) {
+void Game::update_score(int s) {
 	score += s;
 }
 
-void
-Game::update_n_ships(int s) {
+void Game::update_n_ships(int s) {
 	n_ships = s;
 }
 
-void
-Game::update_n_asteroids(int s) {
+void Game::update_n_asteroids(int s) {
 	n_asteroids = s;
 }
 
-void
-Game::update_n_shots(int s) {
+void Game::update_n_shots(int s) {
 	n_shots = s;
 }
 
-bool
-Game::check_enough_score(int type) {
+bool Game::check_enough_score(int type) {
 	bool tmp = false;
 	int diff;
 	switch(type) {
@@ -106,24 +132,21 @@ Game::check_enough_score(int type) {
 	return tmp;
 
 }
-void
-Game::level_completed() {
+void Game::level_completed() {
 	level++;
 	delete wave;
 	wave = NULL;
 	printf("Level completed\n");
 }
 
-void
-Game::game_over_draw() {
+void Game::game_over_draw() {
 	char str[] = "GAME OVER";
 	char str1[] = "Press 'r' to restart...";
 	GraphicPrimitives::drawText2D(str, -0.10, 0.8, 1, 1, 1);
 	GraphicPrimitives::drawText2D(str1, -0.13, 0.6, 1, 1, 1);
 }
 
-void
-Game::reset() {
+void Game::reset() {
 	game_over = false;	
 	score = START_SCORE;
 	level = START_LEVEL;
