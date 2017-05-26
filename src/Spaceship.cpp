@@ -95,8 +95,7 @@ void Spaceship::tick(){
 }
 
 
-void
-Spaceship::change_shot_direction(int counter){
+void Spaceship::change_shot_direction(int counter){
 	if(counter >= NUM_ASTEROIDS_BEHIND)
 		toleft = true;
 	else

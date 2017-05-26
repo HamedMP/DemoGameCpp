@@ -42,12 +42,12 @@ class Game {
 			n_asteroids(0),
 			n_shots(0),
 			pause(false),
-			game_over(false){
-				str_score = new char[20];
-				str_n_ships= new char[20];
-				str_n_asteroids= new char[20];
-				str_help= new char[20];
-			}
+            game_over(false),
+            str_score(new char[20]),
+            str_n_ships(new char[20]),
+            str_n_asteroids(new char[20]),
+            str_help(new char[20]) {}
+
 		int window_width;
 		int window_height;
 		Wave *wave; //pointer to wave object

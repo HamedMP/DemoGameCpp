@@ -32,10 +32,11 @@ class Shot {
 		Shot(point *pos_ = NULL, float speed_ = SHOT_SPEED):
 			width(SHOT_WIDTH),
 			height(SHOT_HEIGHT),
+            speed(speed_),
+            pos(*pos_),
 			died(false) {
 				if(pos_ != NULL) {
 					memcpy(&pos, pos_, sizeof(struct point));
-				speed = speed_;
 				if(speed == -SHOT_SPEED)
 				pos.x -= SHIP_WIDTH/2;  //start the shot from the right of its ships
 				else
@@ -45,12 +46,12 @@ class Shot {
 
 		float width, height;
 		float rgba[4];
-		int id_number;
+        //int id_number;
 		bool died;
 		struct point pos;
-		float fire_rate;
-		float speed;
-		float power;
+        //float fire_rate;
+        float speed;
+        //float power;
 
 		void draw();
 		void tick();

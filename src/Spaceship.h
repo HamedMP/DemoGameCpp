@@ -28,7 +28,9 @@
 class Spaceship{
 
 	public:
-		Spaceship(float posX_ = 0.0f,float posY_ = 0.0f, struct point *pos_ = NULL , int id_number_ = 0, int type_ = SNOW_SHIP, float fire_rate_ = SNOW_SHIP_FIRE_RATE, float speed_ = SNOW_SHIP_SPEED, float life_ = SNOW_SHIP_LIFE):
+        Spaceship(float posX_ = 0.0f,float posY_ = 0.0f, struct point *pos_ = NULL ,
+                  int id_number_ = 0, int type_ = SNOW_SHIP, float fire_rate_ = SNOW_SHIP_FIRE_RATE,
+                  float speed_ = SNOW_SHIP_SPEED, float life_ = SNOW_SHIP_LIFE):
 			posX(posX_),
 			posY(posY_),
 			width(SHIP_WIDTH),
@@ -40,7 +42,9 @@ class Spaceship{
 			speed(speed_),
 			life(life_),
 			died(false),	
-			toleft(false) {	
+            toleft(false),
+            shots(),
+            pos(*pos_){
 				if(pos_ != NULL)
 					memcpy(&pos, pos_, sizeof(struct point));
 				properties_assign();

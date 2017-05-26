@@ -38,7 +38,8 @@ class MyGameEngine:public GameEngine {
 		game(game_),
 		ships(ships_),
 		Blines(Blines_),
-		observer(observer_){}
+        observer(observer_),
+        Asteroids() {}
 
 	virtual void idle();
 

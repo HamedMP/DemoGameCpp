@@ -31,7 +31,7 @@ class MyGraphicEngine:public GraphicEngine {
 	std::vector<Spaceship* > *ships;
 	std::vector<BLine* > *Blines;
 
-	char * str;
+    //char * str;
 	public:
 
 	MyGraphicEngine(Game *game_, std::vector<Spaceship* > * ships_, std::vector<BLine* > * Blines_):

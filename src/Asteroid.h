@@ -35,7 +35,8 @@ class Asteroid{
 			height(ASTEROID_HEIGHT),
 			freq(0),
 			died(false),
-			win(false) {
+            win(false),
+            pos(*pos_){
 			if(pos_ != NULL)
 			memcpy(&pos, pos_, sizeof(struct point));
 		}
@@ -49,10 +50,10 @@ class Asteroid{
 		
 		float width,height;
 		float rgba[4];
-		int fire_rate;
+        //int fire_rate;
 		int freq;
 
-		float power;
+        //float power;
 		bool died;
 		bool win;
 

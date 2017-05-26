@@ -8,3 +8,8 @@
 # CLion files
 .idea/
 cmake-build-debug
+
+# CMake built files 
+build/
+cmake-build-debug/
+CMakeLists.txt.user

@@ -34,9 +34,11 @@ class BLine {
 			rw_cell(RW_CELL),
 			rh_cell(RH_CELL),
 			n_vlines(n_cells+1),
-			n_olines(n_olines_){
+            n_olines(n_olines_),
+            ships_in_cells(new bool[n_cells_]) //enumerating from left to rigth
+        {
 
-				ships_in_cells = new bool[n_cells_];	//enumerating from left to rigth
+                //ships_in_cells = new bool[n_cells_];
 				rh_cell = (float)2/(N_LINES);		
 				for(int i = 0; i < N_CELLS; i++)
 					ships_in_cells[i] = false;	//at the beginning there are not ships into cells

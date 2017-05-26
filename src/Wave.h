@@ -33,7 +33,8 @@ class Wave {
 	public:
 		Wave(int number_asteroids_):
 			number_asteroids(number_asteroids_*ASTEROIDS_IN_WAVE),
-			freq(FREQ_ASTEROIDS_IN_WAVE) {
+            freq(FREQ_ASTEROIDS_IN_WAVE),
+            Asteroids(){
 			create_asteroids();	
 			}
 
