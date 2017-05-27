@@ -37,7 +37,7 @@ using namespace std;
 class Game {
 
     private:
-        void getDificultyChar(char* label);
+        void get_difficulty_char(char* label);
 
 	public:
 		Game():

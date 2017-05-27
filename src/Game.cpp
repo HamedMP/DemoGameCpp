@@ -26,7 +26,7 @@
 using namespace std;
 int N_LINES = 3;
 
-void Game::getDificultyChar(char* label){
+void Game::get_difficulty_char(char* label){
     switch(this->difficulty){
     case(TOO_EASY_DIF):  sprintf(label, "%s", "Very EASY"); break;
     case(EASY_DIF):      sprintf(label, "%s", "EASY"); break;
@@ -40,7 +40,7 @@ void Game::main_menu_draw() {
     char * tmp_str = new char[16];
     char str[] = "Spaceships EIT Edition";
     char str1[] = "Press 'space bar' to start...";
-    getDificultyChar(tmp_str);
+    get_difficulty_char(tmp_str);
     sprintf(difficulty_label, "%s%s%s", "Difficulty: ", tmp_str, " use 'q' for increase and 'e' for decrease... ");
     sprintf(number_of_lines_label, "%s%d%s", "Lines to defend: '", number_of_lines, "' change them with num keys");
     GraphicPrimitives::drawText2D(str, -0.13, 0.8, 1, 0, 0);

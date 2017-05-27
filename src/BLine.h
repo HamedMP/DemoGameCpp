@@ -39,7 +39,7 @@ class BLine {
         {
 
                 //ships_in_cells = new bool[n_cells_];
-				rh_cell = (float)2/(N_LINES);		
+                               rh_cell = (float)2/(N_LINES);
 				for(int i = 0; i < N_CELLS; i++)
 					ships_in_cells[i] = false;	//at the beginning there are not ships into cells
 			}
@@ -55,4 +55,5 @@ class BLine {
 		bool *ships_in_cells;	//true if the nth cell contains already a ship
 
         void draw();
+        void update_N_LINES(int nlines);
 };

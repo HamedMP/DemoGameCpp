@@ -50,3 +50,8 @@ void BLine::draw(){
 		GraphicPrimitives::drawLine2D(x1,y1,x2,y2, 0.3, 0.3, 0.3, 0);
 	}
 }
+
+void BLine::update_N_LINES(int nlines){
+    n_olines = nlines;
+    rh_cell = (float)2/(N_LINES);
+}

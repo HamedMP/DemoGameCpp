@@ -118,13 +118,28 @@ if(!game->pause & !game->game_over & !game->main_menu){
 	}
 }
 
+void MyControlEngine::update_lines_of_game(int lines){
+    N_LINES = lines;
+    game->set_num_lines(lines);
+
+    while(Blines->size() != lines)
+        if(Blines->size() < lines)
+            this->Blines->push_back(new BLine(N_CELLS, game->window_width/(Blines->size()+1), game->window_height/N_CELLS, Blines->size()));
+        else
+            this->Blines->pop_back();
+
+    for (std::vector<BLine*>::iterator it = Blines->begin() ; it != Blines->end(); ++it){
+        BLine* pointer = *it;
+        pointer->update_N_LINES(lines);
+    }
+}
 
 void MyControlEngine::KeyboardCallback(unsigned char key, int x, int y){
     if(game->main_menu){
         if(key== ' ')
           game->main_menu = false;
         else if('1'<= key && key <='5')
-            game->set_num_lines(((int)key)-48);
+            update_lines_of_game(((int)key)-48);
         else if(key=='q')
             game->change_difficulty(HARDER);
         else if(key=='e')
