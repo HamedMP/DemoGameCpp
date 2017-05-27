@@ -24,6 +24,7 @@
 #include "Config.h"
 
 using namespace std;
+int N_LINES = 3;
 
 void Game::getDificultyChar(char* label){
     switch(this->difficulty){
@@ -50,6 +51,7 @@ void Game::main_menu_draw() {
 
 void Game::set_num_lines(int lines){
     this->number_of_lines = lines;
+    N_LINES = lines;
 }
 
 void Game::change_difficulty(int change){
