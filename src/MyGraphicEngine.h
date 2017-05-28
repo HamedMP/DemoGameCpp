@@ -18,6 +18,7 @@
 
 
 #pragma once
+#include <time.h>	// class needs this inclusion
 #include "Engine.h"
 #include "GraphicPrimitives.h"
 #include "Spaceship.h"

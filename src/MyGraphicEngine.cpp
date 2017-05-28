@@ -34,8 +34,6 @@ void MyGraphicEngine::Draw(){
                 ((*ships)[i])->shots[y]->draw();
 				shot_counter += ((*ships)[i])->shots.size();
 			}
-
-
 		}
 
 		if(game->wave!=NULL)

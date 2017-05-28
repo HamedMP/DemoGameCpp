@@ -161,7 +161,7 @@ void MyControlEngine::KeyboardCallback(unsigned char key, int x, int y){
 		//turn absolute coordinates into board coordinates
 		p->x = (float)(x-(game->window_width/2)) / (game->window_width/2);
 		p->y = (float)(y-(game->window_height/2))/ - (game->window_height/2);
-		game->wave = new Wave(game->level);
+        game->wave = new Wave(game->level, game->difficulty);
 		game->n_asteroids = game->wave->number_asteroids;
 		printf("Level: %d\n", game->level);
     }

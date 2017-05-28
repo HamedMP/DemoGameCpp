@@ -27,13 +27,14 @@ class Asteroid{
 
 	public:
 
-		Asteroid( struct point *pos_ = NULL , int id_number_ = 0, float speed_ = ASTEROID_SPEED):
+        Asteroid( struct point *pos_ = NULL , int id_number_ = 0, float speed_ = ASTEROID_SPEED, int lives_ = 1):
 			id_number(id_number_),
 			speedX(ASTEROID_SPEED),
 			speedY(speed_),
 			width(ASTEROID_WIDTH),
 			height(ASTEROID_HEIGHT),
 			freq(0),
+            lives(lives_),
 			died(false),
             win(false),
             pos(*pos_){
@@ -52,6 +53,7 @@ class Asteroid{
 		float rgba[4];
         //int fire_rate;
 		int freq;
+        int lives;
 
         //float power;
 		bool died;

@@ -35,8 +35,7 @@ using namespace std;
 #define Y_COLLISION (ast->pos.y - ast->height/2) < (ship->pos.y + ship->height/2) && (ast->pos.y + ast->height/2) > (ship->pos.y - ship->height/2)
 #define SHIP_DEAD ship->died
 
-void
-Observer::manage_deaths(){
+void Observer::manage_deaths(){
 
 	int i, y;
 	std::vector<Shot *> *shots;
@@ -83,8 +82,7 @@ Observer::manage_deaths(){
 
 }
 
-void
-Observer::check_firing(int line, std::vector<Shot *> *shots) {
+void Observer::check_firing(int line, std::vector<Shot *> *shots) {
 	int i = 0;
 	Asteroid *ast;
 	Shot *shot;
@@ -98,16 +96,19 @@ Observer::check_firing(int line, std::vector<Shot *> *shots) {
 			//need to check the firing and if the shot is still alive
 				if(X_FIRING && Y_FIRING && !SHOT_DEAD) {
 					shot->died = true;
-					ast->died = true;
-					game->update_score(SCORE_HIT);
+                    if(ast->lives == 1){
+                        ast->died = true;
+                        game->update_score(SCORE_HIT);
+                    }
+                    else
+                        ast->lives--;
 				}
 			}
 		}
 	}
 }
 
-void
-Observer::detect_problems() {
+void Observer::detect_problems() {
 	int i;
 	Spaceship *ship;
 	std::vector<Shot *> *shots;
@@ -121,8 +122,7 @@ Observer::detect_problems() {
 
 }
 
-void
-Observer::check_collision(Spaceship *ship) {
+void Observer::check_collision(Spaceship *ship) {
 	int i = 0;	
 	int counter = 0;
 	Asteroid *ast;
@@ -152,8 +152,7 @@ Observer::check_collision(Spaceship *ship) {
 		}
 }
 
-void
-Observer::check_level_finished() {
+void Observer::check_level_finished() {
 	if(game->wave != NULL) {
 		if(game->wave->Asteroids.empty() && game->wave->number_asteroids == 0 && !game->game_over) {
 			game->level_completed();

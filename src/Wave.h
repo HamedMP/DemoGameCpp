@@ -31,14 +31,16 @@ using namespace std;
 class Wave {
 
 	public:
-		Wave(int number_asteroids_):
-			number_asteroids(number_asteroids_*ASTEROIDS_IN_WAVE),
+        Wave(int number_asteroids_, int difficulty_):
+            number_asteroids(number_asteroids_*ASTEROIDS_IN_WAVE*difficulty_),
+            difficulty(difficulty_),
             freq(FREQ_ASTEROIDS_IN_WAVE),
             Asteroids(){
 			create_asteroids();	
 			}
 
 		int number_asteroids;
+        int difficulty;
 		int freq;
 		std::vector<Asteroid*> Asteroids;
 

@@ -39,7 +39,8 @@ Wave::create_asteroids() {
 			else
 				speed = -1;
 
-			Asteroids.push_back(new Asteroid(pos, 0, ASTEROID_SPEED*speed));
+            int lives = difficulty > MEDIUM_DIF ? difficulty - MEDIUM_DIF : 1;
+            Asteroids.push_back(new Asteroid(pos, 0, ASTEROID_SPEED*speed, lives));
 		delete pos;
 		pos = NULL;
 		number_asteroids--;

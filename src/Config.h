@@ -61,4 +61,12 @@
 #define NUM_ASTEROIDS_BEHIND 2
 #define SEC_ASTEROIDS_BEHIND 2
 
+#define TOO_EASY_DIF 1
+#define EASY_DIF 2
+#define MEDIUM_DIF 3
+#define HARD_DIF 4
+#define VERY_HARD_DIF 5
+#define EASIER 0
+#define HARDER 1
+
 extern int N_LINES;
