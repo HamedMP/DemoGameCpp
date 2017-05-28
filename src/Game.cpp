@@ -24,7 +24,7 @@
 #include "Config.h"
 
 using namespace std;
-int N_LINES = 3;
+int N_LINES = 1;
 
 void Game::get_difficulty_char(char* label){
     switch(this->difficulty){

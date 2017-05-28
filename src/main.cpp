@@ -36,10 +36,10 @@ int main(int argc, char * argv[]) {
 	Game game;
 	std::vector<Spaceship*> ships;
 	std::vector<BLine *> Blines;
-	//create the number of Bline objects according to Config.h file
-	for(i = 0; i< N_LINES; i++) {
-		Blines.push_back(new BLine(N_CELLS, game.window_width/(Blines.size()+1), game.window_height/N_CELLS, Blines.size()));
-	}
+
+    //create the number of Bline objects that will be used in the game
+    Blines.push_back(new BLine(N_CELLS, game.window_width/(Blines.size()+1), game.window_height/N_CELLS, Blines.size()));
+
 	Observer* obs = new Observer(&game, &ships, &Blines);
 	GraphicEngine * ge = new MyGraphicEngine(&game, &ships, &Blines);
 	GameEngine * gme = new MyGameEngine(&game, &ships, &Blines, obs);

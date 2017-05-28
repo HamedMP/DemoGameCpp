@@ -21,7 +21,7 @@
 #include <vector>
 #include "GraphicPrimitives.h"
 #include "Config.h"
-#include "utils.h"
+#include "spaceLogic.h"
 #include "Shot.h"
 
 

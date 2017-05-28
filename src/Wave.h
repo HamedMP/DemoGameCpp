@@ -20,7 +20,7 @@
 #pragma once
 #include "Config.h"
 #include "Asteroid.h"
-#include "utils.h"
+#include "spaceLogic.h"
 #include "Config.h"
 #include "GraphicPrimitives.h"
 #include <vector>

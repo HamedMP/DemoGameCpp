@@ -18,10 +18,10 @@
 
 
 #pragma once
+#include <vector>
 #include "Config.h"
 #include "GraphicPrimitives.h"
-#include "utils.h"
-#include <vector>
+#include "spaceLogic.h"
 
 using namespace std;
 

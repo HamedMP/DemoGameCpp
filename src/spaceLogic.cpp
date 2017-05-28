@@ -17,27 +17,23 @@
 */
 
 
+#include <string>
 #include <stdlib.h>
-#include <iostream>
-#include <stdio.h>
 #include "Config.h"
-#include "utils.h"
-#include "ctime"
+#include "spaceLogic.h"
 
 using namespace std;
 
 
-float
-return_random(float x, float x1) {
-	//return a random value between x and x1;	
+//return a random value between x and x1
+float return_random(float x, float x1) {
 	float tmp = x + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/((x1)-(x))));
 	return tmp;
 }
 
 
 
-void
-return_nBline(point *pos, float heigth) {
+void return_nBline(point *pos, float heigth) {
 	int counter = 0;
 	float line = -1;
 	while((counter < N_LINES) && (line + heigth) < pos->y) {
@@ -47,8 +43,7 @@ return_nBline(point *pos, float heigth) {
 	pos->nLine = counter;
 }
 
-void
-return_ncell(point *pos, float width) {
+void return_ncell(point *pos, float width) {
 	int counter = 0;
 	float line = -1;
 	while((counter < N_CELLS) && (line + width) < pos->x) {
@@ -59,8 +54,7 @@ return_ncell(point *pos, float width) {
 }
 
 
-void
-return_o_lines(point *p, float rh_cell) {
+void return_o_lines(point *p, float rh_cell) {
 	float tmp = -1.0f;
 
 	while((tmp + rh_cell) < p->y) {
@@ -72,8 +66,7 @@ return_o_lines(point *p, float rh_cell) {
 
 
 
-void
-return_v_lines(point *p, float rw_cell) {
+void return_v_lines(point *p, float rw_cell) {
 	float tmp = -1.0f;
 
 	while((tmp + rw_cell) < p->x) {
@@ -83,8 +76,7 @@ return_v_lines(point *p, float rw_cell) {
 	p->v_lines[1] = tmp + rw_cell;
 }
 
-void
-print_pos(point *pos) {
+void print_pos(point *pos) {
 	printf("x position is: %f\n", pos->x);
 	printf("y position is: %f\n", pos->y);
 	printf("nLine is: %d\n", pos->nLine);
@@ -94,11 +86,9 @@ print_pos(point *pos) {
 }
 
 
-void
-update_position(point *pos) {
+void update_position(point *pos) {
 	return_ncell(pos, RW_CELL);
 	return_nBline(pos, RH_CELL);
 	return_o_lines(pos, RH_CELL);
 	return_v_lines(pos, RW_CELL);
-
 }

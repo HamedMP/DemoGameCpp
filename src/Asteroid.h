@@ -19,8 +19,7 @@
 #include <vector>
 #include "GraphicPrimitives.h"
 #include "Config.h"
-#include "utils.h"
-#include "Shot.h"
+#include "spaceLogic.h"
 
 
 class Asteroid{

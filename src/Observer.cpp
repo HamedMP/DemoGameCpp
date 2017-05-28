@@ -15,25 +15,9 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-
-
-#include<string>
-#include<cstring>
-#include<sstream>
-#include <stdio.h>
-#include <stdlib.h>
 #include "Observer.h"
-#include "Shot.h"
 
 using namespace std;
-
-#define X_FIRING ((shot->pos.x + shot->width) > ast->pos.x - ast->width/2) && (shot->pos.x < ast->pos.x + ast->width/2)
-#define Y_FIRING ((shot->pos.y + shot->height) > ast->pos.y - ast->height/2) && (shot->pos.y < ast->pos.y + ast->height/2)
-#define SHOT_DEAD shot->died
-
-#define X_COLLISION (ast->pos.x - ast->width/2) < (ship->pos.x + ship->width/2) && (ast->pos.x + ast->width/2) > (ship->pos.x - ship->width/2)
-#define Y_COLLISION (ast->pos.y - ast->height/2) < (ship->pos.y + ship->height/2) && (ast->pos.y + ast->height/2) > (ship->pos.y - ship->height/2)
-#define SHIP_DEAD ship->died
 
 void Observer::manage_deaths(){
 
