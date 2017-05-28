@@ -19,6 +19,8 @@
 
 #pragma once
 
+#include <thread>
+#include <chrono>
 #include "Engine.h"
 #include "Spaceship.h"
 #include "BLine.h"
@@ -32,14 +34,16 @@ class MyGameEngine:public GameEngine {
 	std::vector<BLine *> *Blines;
 	std::vector<Asteroid*> *Asteroids;
 	Observer *observer;
+    int engine_speed; //Percentage, by default 30%, the higher the value the more resources consumes and faster becomes ~= to fps
 	public:
 
-	MyGameEngine(Game *game_, std::vector<Spaceship* > *ships_, std::vector<BLine * > *Blines_, Observer *observer_):
+    MyGameEngine(Game *game_, std::vector<Spaceship* > *ships_, std::vector<BLine * > *Blines_, Observer *observer_, int engine_speed_ = 30):
 		game(game_),
 		ships(ships_),
 		Blines(Blines_),
         observer(observer_),
-        Asteroids() {}
+        Asteroids(),
+        engine_speed(engine_speed_){}
 
 	virtual void idle();
     virtual ~MyGameEngine();

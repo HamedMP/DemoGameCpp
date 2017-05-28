@@ -38,6 +38,8 @@ void MyGameEngine::idle(){
 			}
 		}
 	}
+
+    std::this_thread::sleep_until(std::chrono::system_clock::now() + std::chrono::milliseconds(((int)1000/engine_speed)));
 }
 
 MyGameEngine::~MyGameEngine(){}
