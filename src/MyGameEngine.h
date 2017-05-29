@@ -45,6 +45,10 @@ class MyGameEngine:public GameEngine {
         Asteroids(),
         engine_speed(engine_speed_){}
 
+    //Copy constructor & operator= overload
+    MyGameEngine(const MyGameEngine &obj);
+    MyGameEngine& operator=(const MyGameEngine &obj);
+
 	virtual void idle();
     virtual ~MyGameEngine();
 

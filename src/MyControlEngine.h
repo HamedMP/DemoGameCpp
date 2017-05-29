@@ -39,6 +39,10 @@ class MyControlEngine:public ControlEngine {
 	virtual void KeyboardCallback(unsigned char key, int x, int y) ;
     //virtual void glutSpecialFunc
 
+    //Copy constructor & operator= overload
+    MyControlEngine(const MyControlEngine &obj);
+    MyControlEngine& operator=(const MyControlEngine &obj);
+
     virtual ~MyControlEngine();
 
 private:

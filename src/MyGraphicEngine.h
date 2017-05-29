@@ -44,6 +44,11 @@ class MyGraphicEngine:public GraphicEngine {
 
     virtual void Draw();
 	virtual void reshape(int width, int height);
+
+    //Copy constructor & operator= overload
+    MyGraphicEngine(const MyGraphicEngine &obj);
+    MyGraphicEngine& operator=(const MyGraphicEngine &obj);
+
     virtual ~MyGraphicEngine();
 
 };

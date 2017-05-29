@@ -1,23 +1,26 @@
-#STD: Spaceship Tower Defense.
+# STD: Spaceship Tower Defense EIT Edition
 
 STD is a version in the space of the famous game Tower Defense.<br>
 There is a grid in which you can put spaceships to defense your land. Waves of
 asteroids come to attack you, so you need to install a big defense in order to
 keep the game going.
 
-##How it works
+## How it works
 Each spaceship automatically shots from the left to right, but in case a
-well-known number of asteroids are on the same line behind the spaceship, this
-starts to shot from right to the left.
+increasing number of asteroids are on the same line in front of the spaceships. The asteroids move ramdonly in the vertical axis but constantly in the horizontal axis.
 
+## How to prepare a good defense
 There are three types of spaceships:
-* _SNOW_ : very cheap white spaceship, very fast moving and shooting, but very weak
-* _GRASS_ : green spaceship with a cost, speed, and frequency of shooting in the average. Stronger than _SNOW_ spaceship
-* _BLOOD_: very expensive red spaceship, very slow moving and shooting but very hard to destroy. Very useful near the border of grid to create a defensive "wall"
+* _SNOW_ :  cheap white spaceship, fast moving and shooting, but very weak 
+* _GRASS_ : green spaceship with a cost, speed, and frequency enhanced compared to white spaceship(_SNOW_)
+* _BLOOD_:  expensive red spaceship, very slow moving and shooting but very hard to destroy. 
 
-Each time a spaceship is hit by an asteroid, if it is not a _SNOW_ spaceship,
-it is turned in a lower type of spaceship, otherwise it is destroyed. For example a _BLOOD_ spaceship can become a _GRASS_ spaceship.
+Each time a spaceship is hit by an asteroid, the spaceship loses a level and if it is a _SNOW_ spaceship it gets destroided with the asteroid.
 
+For example a _BLOOD_ spaceship can degraded to a _GRASS_ spaceship.
+
+
+## Rules and Puntuation
 You can add only one spaceship per cell, if you can pay a well-known value with
 your score.
 
@@ -33,7 +36,7 @@ Every wave has a bigger number of asteroids, so make sure you have a great
 defense!
 
 
-##Keys for playing
+## Keys for playing
 * _p_: Game in pause
 * _h_: Show help page
 * _a_: Launch a new wave of asteroids
@@ -42,44 +45,103 @@ defense!
 * _e_: Select spaceship _BLOOD_
 * _mouse left-key_: put a ship inside a cell
 
-##Requirements
+
+## GUI
+A very basic GUI is used for the game, developed by [Guillaume
+Perez](http://www.i3s.unice.fr/~gperez/). It is based on the GLUT library.
+
+# Code Use and Analysis
+
+## Requirements
 * Linux distribution
 * GLUT is required for the GUI
+```
+# Installing GLUT via terminal 
+sudo apt-get install freeglut3-dev
+```
 
-##GUI
-A very basic GUI is used for the game. Thanks to [Guillaume
-Perez](http://www.i3s.unice.fr/~gperez/) for his GLUT based library.
-
-
-##Usage
+## Usage
 Clone the repository:
 ```
-$ git clone --recursive git@github.com:lukesmolo/STD.git
-```
-You can have a look at the Configuration.h file in order to set your favorite values<br>
-Compile the program:
-```
-$ make
-```
-If you modify Config.h file, please clean all and compile again:
-```
-$ make clean
-$ make
+$ git clone https://github.com/MarcosBernal/DemoGameCpp
 ```
 
-##Credits
-__libEngine.a__, the GLUT based library used in this project for GUI, was written
+You can use either the CMakelist.txt or the Makefile to build the program. In case of using Makefile:
+```
+make linux
+make run
+```
+
+Some configurations, like difficulty or number of lines can be changed in the main menu of the game. But others havo to be changed in the file Config.h. Remember to compile the whole program after changing any value in Config.h.
+
+# Software Structure
+
+The project follows the following structure
+
+    STD EIT Edition
+     |
+     +-- include    # Depends on libEngine.a (provided library)
+     |  |
+     |  +-- Engine.h    
+     |  +-- GraphicPrimitives.h
+     |  +-- ...    
+     |  \-- <FileNameN>.txt
+     |    
+     +-- libLinux   # Depends on libEngine.a (provided library)
+     |  |
+     |  \-- libEngine.a
+     |    
+     +-- src
+     |  |
+     |  +-- Config.h
+     |  |
+     |  +-- headers
+     |  |  |
+     |  |  +-- Asteroid.h           
+     |  |  +-- Spaceship.h          
+     |  |  +-- Shot.h               
+     |  |  +-- spaceLogic.h         
+     |  |  +-- BLine.h              
+     |  |  +-- Game.h               
+     |  |  +-- MyControlEngine.h 
+     |  |  +-- MyGameEngine.h 
+     |  |  +-- MyGraphicEngine.h 
+     |  |  +-- Observer.h
+     |  |  \-- Wave.h 
+     |  |
+     |  \-- sources
+     |     +-- <HeaderFile1>.cpp
+     |     +--  ...
+     |     \-- <HeaderFileN>.cpp
+     |
+     +-- CMakeLists.txt
+     +-- Makefile   
+     \-- README.md   
+
+
+# Improvements
+
+- Added CMakeList.txt file. Now, it is possible working and test the code with any IDE instantly.
+- Removed all warnings regarding *-Weffc++*. It should have improved the performance.
+- Removed some warnings regarding *-Wnon-virtual-dtor*. When a class has virtual functions, [its destructor should be also virtual](https://en.wikipedia.org/wiki/Virtual_function#Virtual_destructors). GLUT custom library has to be improved.
+- Added Main menu to configure the game. From there can be selected the number of lines and the difficulty.
+- Added suppport for increassing the difficulty(number of asteroids and their lives) and increase or decrease the number of lines.
+- Added a timer to reduce the resources consumed and improved the game experience. Now the game speed can be followed.
+
+
+## Future improvements
+- improve asteroids behavior and collision
+- show the type of spaceship choosen
+
+
+## Credits
+[__libEngine.a__](https://github.com/memo-p/libGraph) his project., the GLUT based library used in this project for GUI, was written
 by [Guillaume Perez](http://www.i3s.unice.fr/~gperez/).
-<br>
-[Here](https://github.com/memo-p/libGraph) his project.
 
-##License
+The original author of the previous version of Spaceships Tower Defense, [Lukesmolo](https://github.com/lukesmolo), which code can be accessed by [this link](https://github.com/lukesmolo/STD).
+
+## License
 STD is released under the GPLv2 license.
-
-
-
-##TODO
-* improve asteroids
 
 
 
