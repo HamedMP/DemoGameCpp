@@ -61,14 +61,16 @@ sudo apt-get install freeglut3-dev
 ```
 
 ## Usage
-Clone the repository:
+
+The code has been tested under ubuntu 16.04 using qtcreator 4.2 and CMake 3.5.1.
+To access the program, clone the repository:
 ```
 $ git clone https://github.com/MarcosBernal/DemoGameCpp
 ```
 
 You can use either the CMakelist.txt or the Makefile to build the program. In case of using Makefile:
 ```
-make linux
+make
 make run
 ```
 
@@ -118,6 +120,7 @@ The project follows the following structure
      +-- Makefile   
      \-- README.md   
 
+![UML Diagram](https://yuml.me/97cf1805.png)
 
 # Improvements
 
@@ -129,9 +132,14 @@ The project follows the following structure
 - Added a timer to reduce the resources consumed and improved the game experience. Now the game speed can be followed.
 
 
-## Future improvements
+## Future improvements - TODO
+- improve class relation:
+	- elements such as Waves, Ships or Shots should be only contained in Game.h removing dependencies with other classes 
+	- agroup elements that share features in a general class
+	- maybe Observer and MyGameEngine should be joined into one class
 - improve asteroids behavior and collision
 - show the type of spaceship choosen
+- improve difficulty by spamming more asteroids or reducind reward
 
 
 ## Credits

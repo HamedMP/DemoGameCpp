@@ -1,4 +1,5 @@
 /*
+ * Copyright (C) 2017 Marcos Bernal
  * Copyright (C) 2014 Luca Sciullo
  *
  * This program is free software; you can redistribute it and/or

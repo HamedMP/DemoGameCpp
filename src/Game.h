@@ -1,4 +1,5 @@
 /*
+ * Copyright (C) 2017 Marcos Bernal
  * Copyright (C) 2014 Luca Sciullo
  *
  * This program is free software; you can redistribute it and/or
@@ -44,7 +45,7 @@ class Game {
 			n_asteroids(0),
 			n_shots(0),
             difficulty(1),
-            number_of_lines(3),
+            number_of_lines(1),
             main_menu(true),
 			pause(false),
             game_over(false),

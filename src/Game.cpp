@@ -1,4 +1,5 @@
 /*
+ * Copyright (C) 2017 Marcos Bernal
  * Copyright (C) 2014 Luca Sciullo
  *
  * This program is free software; you can redistribute it and/or
@@ -43,10 +44,10 @@ void Game::main_menu_draw() {
     get_difficulty_char(tmp_str);
     sprintf(difficulty_label, "%s%s%s", "Difficulty: ", tmp_str, " use 'q' for increase and 'e' for decrease... ");
     sprintf(number_of_lines_label, "%s%d%s", "Lines to defend: '", number_of_lines, "' change them with num keys");
-    GraphicPrimitives::drawText2D(str, -0.13, 0.8, 1, 0, 0);
-    GraphicPrimitives::drawText2D(str1, -0.16, 0.6, 1, 1, 0);
-    GraphicPrimitives::drawText2D(difficulty_label, -0.16, 0.4, 1, 1, 0);
-    GraphicPrimitives::drawText2D(number_of_lines_label, -0.16, 0.2, 1, 1, 0);
+    GraphicPrimitives::drawText2D(str, -0.25, 0.6, 1, 0, 0);
+    GraphicPrimitives::drawText2D(str1, -0.32, 0.3, 1, 1, 0);
+    GraphicPrimitives::drawText2D(difficulty_label, -0.32, 0.1, 1, 1, 0);
+    GraphicPrimitives::drawText2D(number_of_lines_label, -0.32, -0.1, 1, 1, 0);
 }
 
 void Game::set_num_lines(int lines){
